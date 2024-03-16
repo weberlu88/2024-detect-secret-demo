@@ -1,0 +1,11 @@
+detect-secrets scan testdata/ --all-files > output.json
+
+detect-secrets scan testdata/ --all-files --exclude-secrets secretName: > output.json
+
+detect-secrets scan testdata/ --all-files --word-list src/wordlist  > output.json
+
+# to ignore certain secret values in your scan
+--exclude-secrets '(fakesecret|\${.*})'
+--exclude-files '.*\.signature$'
+#  globally allow certain lines
+--exclude-lines 'password = (blah|fake)'
